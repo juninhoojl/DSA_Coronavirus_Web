@@ -23,6 +23,9 @@
     <!-- Comum stylesheet -->
     <link rel = "stylesheet" type = "text/css" href = "css/comum.css"/>
 
+    <!-- Stats stylesheet -->
+    <link rel = "stylesheet" type = "text/css" href = "css/comum.css"/>
+
     <!-- FontAwesome-->
     <script src="https://kit.fontawesome.com/42e5598932.js" crossorigin="anonymous"></script>
     <title>Covid_20</title>
@@ -32,8 +35,6 @@
     <link rel="icon" href="img/icons/icon_32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="img/icons/icon_64x64.png" sizes="64x64" type="image/png">
     <link rel="icon" href="img/icons/icon_128x128.png" sizes="128x128" type="image/png">
-
-
 
     <!-- Icones para favoritos e abas iPhone e home screen -->
     <link rel="apple-touch-icon-precomposed" sizes="128x128" href="img/icons/icon_128x128.png">
@@ -45,46 +46,29 @@
 
   </head>
   <body>
-
-    <section id="capa" class="min-vh-100">
-        <div id="capa-itens">
-            <div class="container">
-                <div class="row">
-                    <div id="caixa" class="col-xl-9 col-lg-9 col-md-9 col-sm-9 mx-auto text-center form p-4">
-
-                        <h1 class="display-4 titulo"><i class="fa fa-viruses"></i>Covid20</h1>
-
-                            <form action="" class="justify-content-center">
-
-                                <div class="form-box">
-                                      <input type="text" id="entrada" class="form-control entrada" placeholder="username" value="">
-                                </div>
-
-                                <div class="form-box">
-                                      <input type="password" id="contrasena" class="form-control entrada" placeholder="password" value="">
-                                </div>
-
-                                <div class="form-box">
-                                    <button href="#" id="botao2" class="btn btn-secondary botao btn-block" type="button">Login
-                                    <i class="fa fa-sign-in"></i>
-                                    </button>
-                                </div>
-
-                            </form>
-
-                        <div id="ghapidata"></div>
-                        <a  href="./registrar.html" class="col-12 text-center registrar">Create Account</a>
-                        
-                    </div>
-
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 mx-auto text-center form p-4">
+                <table id="table" class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Level</th>
+                        <th scope="col">Exp</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </section>
+    </div>
+
 
     <!-- Global JavaScript -->
-    <script type="text/javascript" src="js/comum.js"></script>
-
+    <script type="text/javascript" src="js/stats.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

@@ -1,0 +1,37 @@
+[
+  {
+    "email": "admin@admin.com",
+    "exp": 0,
+    "id": "admin",
+    "level": 100,
+    "name": "admin"
+  },
+  {
+    "email": "juninhopc@yandex.com",
+    "exp": 0,
+    "id": "05OTEOXQ",
+    "level": 1,
+    "name": "juninhoojl"
+  },
+  {
+    "email": "string",
+    "exp": 0,
+    "id": "bC3awSq6",
+    "level": 1,
+    "name": "juninhoo"
+  },
+  {
+    "email": "carloshermoso",
+    "exp": 0,
+    "id": "HfnABylo",
+    "level": 1,
+    "name": "carlos"
+  },
+  {
+    "email": "string",
+    "exp": 0,
+    "id": "YxUBD2yI",
+    "level": 1,
+    "name": "david"
+  }
+]
