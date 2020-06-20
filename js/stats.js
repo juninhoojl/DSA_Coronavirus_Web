@@ -15,21 +15,3 @@ $(document).ready(function(){
 
         });
 });
-/*
-
-$(document).ready(function(){
-    $.ajax({
-        url:"file:///usr/local/var/www/js/userRank.json",
-        dataType:"json",
-        success:function(data){
-            $(data).each(function(index, value){
-                var record="<tr><td>"+(index+1)+"</td><td>"+value.email+"</td><td>"+value.email+"</td><td>"+value.level+"</td><td>"+value.exp+"</td></tr>";
-                $("table").append(record);
-            });
-        }
-    });
-});
-
-
-
-*/
