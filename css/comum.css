@@ -5,6 +5,11 @@ body {
   padding: 0.5em;
 }
 
+.item-stats{
+    color: #95A0E8;
+    font-weight: bold;
+}
+
 .bloco-perfil{
 
   margin-top: 2em;
