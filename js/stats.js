@@ -16,13 +16,13 @@ $(document).ready(function(){
         });
     });
 
-        var a = ['a','a','a','b','b','c','e'];
+        var a = ['1','1','1','2','2','3','4'];
         // Contar a quantidade de cada um do unique
         var counts = {};
         for (var i = 0; i < a.length; i++) {
             counts[a[i]] = 1 + (counts[a[i]] || 0);
-
         }
+
         var lItem = [];
         var lValues = [];
         for (var key in counts) {
@@ -40,6 +40,7 @@ $(document).ready(function(){
         var chart = new Chart(ctx, {
         // The type of chart we want to create
         type: 'bar',
+        responsive: true,
         // The data for our dataset
         data: {
             // O reduzido
@@ -54,17 +55,76 @@ $(document).ready(function(){
 
         // Configuration options go here
         options: {
-        scales: {
-        yAxes: [{
-            ticks: {
-                beginAtZero: true,
-                stepSize: 1
+            legend: {
+             labels: {
+                  fontColor: '#FFFFFF'
+                 }
+              },
+            title: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1,
+                        fontColor: '#FFFFFF'
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: '#FFFFFF'
+                    }
+                }]
             }
-        }]
-    }
-
         }
     });
+
+    // Grafico 2
+var ctx = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+        responsive: true,
+        // The data for our dataset
+        data: {
+            // O reduzido
+            labels: lItem,
+            datasets: [{
+                label: 'Level',
+                backgroundColor: '#95A0E8',
+                borderColor: '#95A0E8',
+                data: lValues
+            }]
+        },
+
+        // Configuration options go here
+        options: {
+            legend: {
+             labels: {
+                  fontColor: '#FFFFFF'
+                 }
+              },
+            title: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 1,
+                        fontColor: '#FFFFFF'
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: '#FFFFFF'
+                    }
+                }]
+            }
+        }
+    });
+
 
 });
 
