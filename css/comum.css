@@ -5,6 +5,13 @@ body {
   padding: 0.5em;
 }
 
+.navbarAjuste{
+
+  z-index: 5;
+
+
+}
+
 .item-stats{
     color: #95A0E8;
     font-weight: bold;

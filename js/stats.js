@@ -3,38 +3,50 @@ $(document).ready(function(){
     var teste = false;
     var nameConfere = "Calculadora";
     var vetNivel = new Array();
-    
+    var vetExp = new Array();
+
     $.getJSON(staticUrl, function(data){
+
         $(data).each(function(index, value){
-
-            //for(i=0;i<data.length;i++){
-                var record="<tr><td>"+(index+1)+"</td><td>"+value.name+"</td><td>"+value.level+"</td><td>"+value.exp+"</td></tr>";
-                vetNivel.push(value.exp);
-            //}
-
+            switch(index) {
+              case 0:
+                var nome = "🥇 "+value.name;
+                break;
+              case 1:
+                var nome = "🥈 "+value.name;
+                break;
+              case 2:
+                var nome = "🥉 "+value.name;
+                break;
+              case data.length-1:
+                var nome = "💩 "+value.name;
+                break;
+              default:
+                var nome = value.name;
+            }
             
-                // Criar vetor de nivel
-            
+            var record="<tr><td>"+(index+1)+"</td><td>"+nome+"</td><td>"+value.level+"</td><td>"+value.exp+"</td></tr>";
+            vetNivel.push(value.level);
+            vetExp.push(value.exp);
+        
             $("table").append(record);
         });
         if(!teste){
                 teste=true;
-                graficos(vetNivel);
-                console.log(vetNivel);
+                graficos(vetExp,"expChart","Exp");
+                graficos(vetNivel,"levelChart","Level");
             }
-
     });
-
 });
 
-function graficos(vetNivel) {
-            //var a = ['1','1','1','2','2','3','4'];
+function graficos(vetNivel,name,nameSet) {
+        //var a = ['1','1','1','2','2','3','4'];
         // Contar a quantidade de cada um do unique
-        
         var counts = {};
         for (var i = 0; i < vetNivel.length; i++) {
             counts[vetNivel[i]] = 1 + (counts[vetNivel[i]] || 0);
         }
+
         var lItem = [];
         var lValues = [];
         for (var key in counts) {
@@ -46,12 +58,10 @@ function graficos(vetNivel) {
                 //console.log(counts[key]);
             }
         }
-
-        MostraGraficos(lItem,lValues,"myChart");
-        MostraGraficos(lItem,lValues,"myChart2");
+        MostraGraficos(lItem,lValues,name,nameSet);
 }
 
-function MostraGraficos(label,valores,name) {
+function MostraGraficos(label,valores,name,nameSet) {
 
             //var unique = Array.from(new Set(a));
         var ctx = document.getElementById(name).getContext('2d');
@@ -64,8 +74,9 @@ function MostraGraficos(label,valores,name) {
                 // O reduzido
                 labels: label,
                 datasets: [{
-                    label: 'Level',
+                    label: nameSet,
                     backgroundColor: '#95A0E8',
+                    hoverBackgroundColor: '#A4AEF7',
                     borderColor: '#95A0E8',
                     data: valores
                 }]
@@ -73,7 +84,9 @@ function MostraGraficos(label,valores,name) {
 
             // Configuration options go here
             options: {
+
                 legend: {
+                 display: false,
                  labels: {
                       fontColor: '#FFFFFF'
                      }
@@ -83,6 +96,11 @@ function MostraGraficos(label,valores,name) {
                 },
                 scales: {
                     yAxes: [{
+                        scaleLabel: {
+                            fontColor: '#FFFFFF',
+                            display: true,
+                            labelString: 'Users',
+                        },
                         ticks: {
                             beginAtZero: true,
                             stepSize: 1,
@@ -90,6 +108,11 @@ function MostraGraficos(label,valores,name) {
                         }
                     }],
                     xAxes: [{
+                        scaleLabel: {
+                            fontColor: '#FFFFFF',
+                            display: true,
+                            labelString: nameSet,
+                        },
                         ticks: {
                             fontColor: '#FFFFFF'
                         }
@@ -97,6 +120,5 @@ function MostraGraficos(label,valores,name) {
                 }
             }
         });
-
 
 }
