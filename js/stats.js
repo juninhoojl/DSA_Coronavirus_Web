@@ -5,10 +5,9 @@ $(document).ready(function(){
     var vetNivel = new Array();
     var vetExp = new Array();
 
-
+    // pega o nome
 
     $.getJSON(staticUrl, function(data){
-
         $(data).each(function(index, value){
             switch(index) {
               case 0:

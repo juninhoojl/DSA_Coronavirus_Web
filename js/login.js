@@ -28,9 +28,15 @@ $(function(){
 	    complete: function(data) {
 	    	console.log("Completo");
 	        console.log(data.status);
-	        setCookie('cookieToken',data.responseText);
-	        setCookie('cookieCred',Credentials);
+	        setCookie('cookieToken',data.responseText,7);
+	        setCookie('cookieName',Credentials.name,7);
 	        console.log(data.responseText);
+	        var reqid = "http://localhost:8080/dsaApp/user/"+Credentials.name;
+	        // Se foi completo solicitar o id
+		    $.getJSON(reqid, function(data){
+		    	setCookie('cookieId',data.id,7);
+		    	console.log(data.id);
+		    });
 	    }
 	});
 
@@ -47,41 +53,3 @@ function setCookie(name,value,days) {
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
-
-
-	
-	/*
-
-	$.post('http://localhost:8080/dsaApp/user/login', JSON.stringify(posttext), function(response){ 
-      alert("success");
-	});
-
-	$.ajax({
-	    type: "POST",
-	    url: "http://localhost:8080/dsaApp/user/login",
-	    // The key needs to match your method's input parameter (case-sensitive).
-	    data: "{ \"name\": \"juninho\", \"password\": \"asdfghjk\"}",
-	    contentType: "application/json; charset=utf-8",
-	    dataType: "json",
-	    success: function(data){alert(data);},
-	    failure: function(errMsg) {
-	        alert(errMsg);
-	    }
-	});
-
-
-	$.ajax({
-		type: "POST",
-		url: "http://localhost:8080/dsaApp/user/login",
-		data: "{ \"name\": \"juninho\", \"password\": \"asdfghjk\"}",
-		contentType: "application/json; charset=utf-8",
-		dataType: "json",
-		success: function(msg) {
-		  // Hide the fake progress indicator graphic.
-		  $('#RSSContent').removeClass('loading');
-
-		  // Insert the returned HTML into the <div>.
-		  $('#RSSContent').html(msg.d);
-		}
-	});
-*/
