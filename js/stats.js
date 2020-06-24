@@ -5,6 +5,8 @@ $(document).ready(function(){
     var vetNivel = new Array();
     var vetExp = new Array();
 
+
+
     $.getJSON(staticUrl, function(data){
 
         $(data).each(function(index, value){
