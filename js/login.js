@@ -9,11 +9,9 @@ $(function(){
     var inputUser = document.getElementById("textUser").value;
 	var inputPass = document.getElementById("textPass").value;
 
-	setCookie('cookieName',inputUser,7);
-
 	var Credentials = {
-		"name": "juninho",
-		"password": "asdfghjk"
+		"name": inputUser,
+		"password": inputPass
 	};
 
 	$.ajax({
@@ -23,11 +21,16 @@ $(function(){
 	    data: JSON.stringify(Credentials),
 	    contentType: "application/json; charset=utf-8",
 	    dataType: "json",
-	    success: function(data, textStatus, xhr) {
-	        console.log(xhr.status);
+	    success: function(data) {
+	    	console.log("Sucesso");
+	        console.log(data.status);
 	    },
-	    complete: function(xhr, textStatus) {
-	        console.log(xhr.status);
+	    complete: function(data) {
+	    	console.log("Completo");
+	        console.log(data.status);
+	        setCookie('cookieToken',data.responseText);
+	        setCookie('cookieCred',Credentials);
+	        console.log(data.responseText);
 	    }
 	});
 
