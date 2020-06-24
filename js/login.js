@@ -1,4 +1,22 @@
 // curl -X POST "http://147.83.7.204:8080/dsaApp/user/login" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"name\": \"juninhoojl\", \"password\": \"asdfghjk\"}"
+$(document).ready(function(){
+
+	console.log("DOCOK");
+    // vai limpar os cookies relacionados
+    cleanCookie("cookieId",);
+    cleanCookie("cookieName");
+    cleanCookie("cookieToken");
+
+});
+
+function cleanCookie(name) {
+    var expires = "";
+        var date = new Date();
+        date.setTime(date.getTime() + (7*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    document.cookie = name + "=" + ('' || "")  + expires + "; path=/";
+}
+
 $(function(){
 
   $('#botaoLogin').on('click', function(e){
@@ -36,6 +54,7 @@ $(function(){
 		    $.getJSON(reqid, function(data){
 		    	setCookie('cookieId',data.id,7);
 		    	console.log(data.id);
+		    	location.href = 'estatisticas.html';
 		    });
 	    }
 	});
@@ -53,3 +72,5 @@ function setCookie(name,value,days) {
     }
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
+
+

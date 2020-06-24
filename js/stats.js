@@ -4,9 +4,9 @@ $(document).ready(function(){
     var nameConfere = "Calculadora";
     var vetNivel = new Array();
     var vetExp = new Array();
+    var nomeCookie = getCookie('cookieName');
 
     // pega o nome
-
     $.getJSON(staticUrl, function(data){
         $(data).each(function(index, value){
             switch(index) {
@@ -25,8 +25,15 @@ $(document).ready(function(){
               default:
                 var nome = value.name;
             }
-            
-            var record="<tr><td>"+(index+1)+"</td><td>"+nome+"</td><td>"+value.level+"</td><td>"+value.exp+"</td></tr>";
+
+            if (nomeCookie == value.name) {
+                console.log(nomeCookie+" "+value.name);
+                // compara aqui
+                // vai colorir de rosa
+                var record='<tr class="corUser"><td>'+(index+1)+"</td><td>"+nome+"</td><td>"+value.level+"</td><td>"+value.exp+"</td></tr>";
+            }else{
+                var record="<tr><td>"+(index+1)+"</td><td>"+nome+"</td><td>"+value.level+"</td><td>"+value.exp+"</td></tr>";
+            }
             vetNivel.push(value.level);
             vetExp.push(value.exp);
         
