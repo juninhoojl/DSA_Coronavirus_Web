@@ -27,8 +27,12 @@ function montaCartao(conteudo, nome, sdata, id){
 			composicao+='" class="d-block ui-w-40 rounded-circle" alt=""><div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">';
 			composicao+= nome.toUpperCase();;
 			composicao+= '</a><div class="text-muted small">';
-			composicao+= sdata;
-			composicao+= '</div></div><div class="text-muted small ml-3"><div>Level <strong>12</strong></div><div><strong>134</strong> posts</div></div></div></div><div class="card-body"><p>';
+			composicao+= data.email;
+			composicao+= '</div></div><div class="text-muted small ml-3"><div>Exp <strong>';
+			composicao+= data.exp;
+			composicao+= '</strong></div><div><strong>';
+			composicao+= sdata.substr(0, 9);
+			composicao+= '</strong></div></div></div></div><div class="card-body"><p>';
 			composicao+= conteudo;
 		    composicao+= '</p></div></div>';
 		    addCode(composicao);
@@ -37,25 +41,18 @@ function montaCartao(conteudo, nome, sdata, id){
 			composicao+='" class="d-block ui-w-40 rounded-circle" alt=""><div class="media-body ml-3"> <a href="javascript:void(0)" data-abc="true">';
 			composicao+= nome.toUpperCase();;
 			composicao+= '</a><div class="text-muted small">';
-			composicao+= sdata;
-			composicao+= '</div></div><div class="text-muted small ml-3"><div>Level <strong>12</strong></div><div><strong>134</strong> posts</div></div></div></div><div class="card-body"><p>';
+			composicao+= data.email;
+			composicao+= '</div></div><div class="text-muted small ml-3"><div>Exp <strong>';
+			composicao+= data.exp;
+			composicao+= '</strong></div><div><strong>';
+			composicao+= sdata.substr(0, 9);
+			composicao+= '</strong></div></div></div></div><div class="card-body"><p>';
 			composicao+= conteudo;
 		    composicao+= '</p></div></div>';
 		    addCode(composicao);
 	    })
-
-
-
     });
-
 }
-
-function dateDif(datePost){
-
-	return "teste";
-
-}
-
 
 function reqUrl(name){
     var reqid = 'http://localhost:8080/dsaApp/user/'+name;
@@ -87,3 +84,50 @@ function addCode(cartao) {
 	document.getElementById("DIVCARTAO").insertAdjacentHTML("beforeend", 
 		cartao); 
 }
+
+
+$(function(){
+
+  $('#botaoLogin').on('click', function(e){
+    e.preventDefault();
+
+    // Vai conferir se esta vazio ou nao
+
+    var inputUser = document.getElementById("textUser").value;
+	var inputPass = document.getElementById("textPass").value;
+
+	var Credentials = {
+		"name": inputUser,
+		"password": inputPass
+	};
+
+	$.ajax({
+	    type: "POST",
+	    url: "http://localhost:8080/dsaApp/user/login",
+	    // The key needs to match your method's input parameter (case-sensitive).
+	    data: JSON.stringify(Credentials),
+	    contentType: "application/json; charset=utf-8",
+	    dataType: "json",
+	    success: function(data) {
+	    	console.log("Sucesso");
+	        console.log(data.status);
+	    },
+	    complete: function(data) {
+	    	console.log("Completo");
+	        console.log(data.status);
+	        setCookie('cookieToken',data.responseText,7);
+	        setCookie('cookieName',Credentials.name,7);
+	        console.log(data.responseText);
+	        var reqid = "http://localhost:8080/dsaApp/user/"+Credentials.name;
+	        // Se foi completo solicitar o id
+		    $.getJSON(reqid, function(data){
+		    	setCookie('cookieId',data.id,7);
+		    	console.log(data.id);
+		    	location.href = 'estatisticas.html';
+		    });
+	    }
+	});
+
+  }); // end click event handler
+
+});

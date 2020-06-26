@@ -93,6 +93,28 @@ form:before {
      cursor:pointer;  
 }
 
+.conjuntoChat{
+
+    margin-top: 1em;
+}
+
+.botaoPost, .botaoPost:hover{
+
+  border-radius: 10px;
+  margin-top: 1em;
+  border:0;
+  box-shadow: none;
+  color: #FAFAFA;
+  font-size: 1.5em;
+  z-index: 3;
+  background-color: #95A0E8; 
+
+}
+
+.botaoPost:hover {
+     background-color: #9FA9EF;
+     cursor:pointer;  
+}
 
 .entrada{
 
