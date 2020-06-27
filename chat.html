@@ -55,8 +55,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="instrucoes.html">Instructions</a>
               </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="estatisticas.html">Stats<span class="sr-only">(current)</span></a>
+              <li class="nav-item">
+                <a class="nav-link active" href="chat.html">Forum<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="estatisticas.html">Stats</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="login.html">Logout</a>
@@ -64,19 +67,29 @@
             </ul>
           </div>
         </nav>
-<div class="container-fluid mt-100 no-padding">
-     <div class="row conjuntoChat">
-         <div id="DIVCARTAO" class="col-md-12 div">
+<div class="container-fluid no-padding">
+  <div class="">
+      <div class="row justify-content-center conjuntoChat">
+          <div class="col-md-10 col-lg-8 col-sm-12">
+                <h1 class="text-center item-stats"><i class="fa fa-comments"></i> Forum</h1>
+           </div>
+      </div>
+      <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-8 col-sm-10">
+        <div id="DIVCARTAO">
 
-         </div>
-     
-        <div class="col-md-12">
-          <textarea class="form-control entrada" rows="3" placeholder="Write here!" required></textarea>
-          <button href="#" id="botaoPost" class="btn btn-secondary botaoPost btn-block" type="button">Post
-          <i class="fa fa-paper-plane"></i>
-          </button>
         </div>
-    </div>
+      </div>
+      </div>
+      <div class="row justify-content-md-center conjuntoChat">
+          <div class="col-md-10 col-lg-8 col-sm-12">
+            <textarea id="textPost" class="form-control entrada" rows="3" placeholder="Write here!" required></textarea>
+            <button href="#" id="botaoPost" class="btn btn-secondary botaoPost btn-block" type="button">Post
+            <i class="fa fa-paper-plane"></i>
+            </button>
+          </div>
+      </div>
+   </div>
  </div>
 
     <!-- Global JavaScript -->
