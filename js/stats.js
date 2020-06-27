@@ -1,4 +1,15 @@
 $(document).ready(function(){
+
+    var x = getCookie('cookieName');
+    if (x) {
+        document.getElementById("nomeNavBarra").textContent = x;
+        document.getElementById("acaoLogin").textContent = "Logout";
+        // Esconde pede login
+    }else{
+        document.getElementById("acaoLogin").textContent = "Login";
+        // Mostra texto fazer login para interagir
+    }
+
     var staticUrl = 'http://localhost:8080/dsaApp/stats/userranking';
     var teste = false;
     var nameConfere = "Calculadora";

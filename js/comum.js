@@ -2,6 +2,7 @@ $(document).ready(function(){
 
     //setCookie('cookieName','VALORCOOKIE',7);
     var x = getCookie('cookieName');
+
     /*
     if (x) {
         console.log(x);
@@ -11,7 +12,6 @@ $(document).ready(function(){
     */
 
 });
-
 // Faz login
 function setCookie(name,value,days) {
     var expires = "";

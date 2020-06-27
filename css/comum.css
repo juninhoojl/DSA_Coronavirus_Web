@@ -182,7 +182,13 @@ form:before {
   margin:0;
 
 }
+#overlay img { display: none; }
 
+#overlay.currently-loading img { 
+    display: block; 
+    width: 100%;
+    heigth: 100%;
+}
 .tituloEspacar{
   padding-top: 3em;
 }

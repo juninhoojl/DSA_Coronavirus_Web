@@ -12,6 +12,17 @@ $(document).ready(function(){
 		location.href = 'login.html';
 	}
 
+	$(document).ready(function(){
+    var x = getCookie('cookieName');
+    if (x) {
+        document.getElementById("nomeNavBarra").textContent = x;
+        // Esconde pede login
+    }else{
+    	location.href = 'login.html';
+    }
+
+});
+
 });
 
 $(function(){
@@ -52,6 +63,36 @@ $(function(){
 				},
 				complete: function(data) {
 					console.log("Completo");
+					// Faz login aqui
+					var inputUser = document.getElementById("textUser").value;
+					var inputPass = document.getElementById("textPass").value;
+
+					var Credentials = {
+						"name": User.name,
+						"password": User.password
+					};
+
+					$.ajax({
+					    type: "POST",
+					    url: "http://localhost:8080/dsaApp/user/login",
+					    // The key needs to match your method's input parameter (case-sensitive).
+					    data: JSON.stringify(Credentials),
+					    contentType: "application/json; charset=utf-8",
+					    dataType: "json",
+					    success: function(data) {
+					    	console.log("Sucesso");
+					        console.log(data.status);
+					    },
+					    complete: function(data) {
+					    	console.log("Completo");
+					        console.log(data.status);
+					        setCookie('cookieToken',data.responseText,7);
+					        setCookie('cookieName',Credentials.name,7);
+					    	setCookie('cookieId',User.id,7);
+					    	location.href = 'chat.html';
+					    }
+					});
+
 					console.log(data.status);
 				}
 			});

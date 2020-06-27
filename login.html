@@ -44,25 +44,27 @@
   </head>
   <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-          <a class="navbar-brand" href="mindex.html">Covid20_</a>
+          <a id="nomeNavBarra" class="navbar-brand" href="update.html">Covid20_</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="instrucoes.html">Instructions</a>
+                <a class="nav-link" href="instrucoes.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="chat.html">Forum<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="chat.html">Forum</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="estatisticas.html">Stats</a>
               </li>
+              <li class="nav-item">
+                <a id="acaoLogin" class="nav-link active" href="login.html">Login<span class="sr-only">(current)</span></a>
+              </li>
             </ul>
           </div>
         </nav>
-
     <section id="capa" class="min-vh-100">
         <div id="capa-itens">
             <div class="container">
@@ -98,7 +100,11 @@
             </div>
         </div>
     </section>
-
+            <footer class="footer font-small pt-4">
+            <div id="copyright-rodape" class="text-center">Copyright © 
+              <a id="link-rodape" href="https://github.com/juninhoojl/DSA_Coronavirus_Web"><i class="fab fa-github"></i><i>Covid20_</i></a>
+            </div>
+        </footer>
     <!-- Global JavaScript -->
     <script type="text/javascript" src="js/login.js"></script>
 
