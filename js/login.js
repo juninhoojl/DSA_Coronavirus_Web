@@ -54,7 +54,7 @@ $(function(){
 		    $.getJSON(reqid, function(data){
 		    	setCookie('cookieId',data.id,7);
 		    	console.log(data.id);
-		    	location.href = 'estatisticas.html';
+		    	location.href = 'chat.html';
 		    });
 	    }
 	});

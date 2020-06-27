@@ -7,6 +7,18 @@ $(document).ready(function(){
 		firstFunction();
 	}
 
+	var x = getCookie('cookieName');
+    if (x) {
+    	document.getElementById("nomeNavBarra").textContent = x;
+    	document.getElementById("acaoLogin").textContent = "Logout";
+    	document.getElementById("blocoFazerLogin").style.display = "none";
+        // Esconde pede login
+    }else{
+    	document.getElementById("acaoLogin").textContent = "Login";
+    	document.getElementById("blocoComentar").style.display = "none";
+        // Mostra texto fazer login para interagir
+    }
+
 	// pega o nome
 });
 

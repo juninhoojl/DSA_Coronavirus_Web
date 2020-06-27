@@ -2,11 +2,13 @@ $(document).ready(function(){
 
     //setCookie('cookieName','VALORCOOKIE',7);
     var x = getCookie('cookieName');
+    /*
     if (x) {
         console.log(x);
     }else{
         location.href = 'login.html';
     }
+    */
 
 });
 

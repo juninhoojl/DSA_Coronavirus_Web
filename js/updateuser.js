@@ -7,94 +7,71 @@ $(document).ready(function(){
 	console.log("DOCOK");
 	// Para atualizar os dados tem que estar logado
 	if(idCookie) {
-        console.log(idCookie);
-    }else{
-        location.href = 'login.html';
-    }
+		console.log(idCookie);
+	}else{
+		location.href = 'login.html';
+	}
 
 });
 
 $(function(){
 
-  $('#botaoUpdate').on('click', function(e){
-    e.preventDefault();
+	$('#botaoUpdate').on('click', function(e){
+		e.preventDefault();
+		console.log("ATUALIZANDO");
+		//Vai atualizar os dados aqui
+		//curl -X PUT "http://localhost:8080/dsaApp/user/1t8bTj5D" -H "accept: application/json" -H "Content-Type: application/json" -d "{ \"id\": \"1t8bTj5D\", \"name\": \"user07\", \"email\": \"user01@mail.com\", \"password\": \"asdfghjk\", \"exp\": 0, \"level\": 1, \"adminRights\": \"\"}"
+	
+		// INICIO EXEMPLO
+		var reqid = 'http://localhost:8080/dsaApp/user/search/'+getCookie('cookieId');
+		// Se foi completo solicitar o id
 
-    // Vai conferir se esta vazio ou nao
-    var inputUser = document.getElementById("textUser").value;
-	var inputPass = document.getElementById("textPass").value;
-	var inputMail = document.getElementById("textMail").value;
+		$.getJSON(reqid, function(data){
+			var User = {
+				"id": getCookie('cookieId'),
+				"name": document.getElementById("textUser").value,
+				"email": document.getElementById("textMail").value,
+				"password": document.getElementById("textPass").value,
+				"exp": data.exp,
+				"level": data.level,
+				"adminRights": ""
+			};
 
-	// Vai solicitar a info do user usando o id 
-	var reqinfo = "http://localhost:8080/dsaApp/user/search/"+idCookie;
-	// Se foi completo solicitar o id
-	$.getJSON(reqinfo, function(data){
-		setCookie('cookieId',data.id,7);
-		console.log(data.id);
-		location.href = 'estatisticas.html';
+			// Faco o post aqui
 
-
-		Vai atualizar os dados aqui
-
-
-
-
-
-	});
-
-
-	var RegisterCredentials = {
-		"name": inputUser,
-		"email": inputMail,
-		"password": inputPass
-	};
-
-
-	$.ajax({
-	    type: "POST",
-	    url: "http://localhost:8080/dsaApp/user/adduser",
-	    // The key needs to match your method's input parameter (case-sensitive).
-	    data: JSON.stringify(RegisterCredentials),
-	    contentType: "application/json; charset=utf-8",
-	    dataType: "json",
-	    success: function(data) {
-	    	console.log("Sucesso");
-	        console.log(data.status);
-	    },
-	    complete: function(data) {
-	    	// Vai fazer o login com os dados
-	    	$.ajax({
-			    type: "POST",
-			    url: "http://localhost:8080/dsaApp/user/login",
-			    // The key needs to match your method's input parameter (case-sensitive).
-			    data: JSON.stringify(Credentials),
-			    contentType: "application/json; charset=utf-8",
-			    dataType: "json",
-			    success: function(data) {
-			    	console.log("Sucesso");
-			        console.log(data.status);
-			    },
-			    complete: function(data) {
-			    	// Vai fazer o login com os dados
-			    	console.log("Completo");
-			        console.log(data.status);
-			        setCookie('cookieToken',data.responseText,7);
-			        setCookie('cookieName',Credentials.name,7);
-			        console.log(data.responseText);
-			        var reqid = "http://localhost:8080/dsaApp/user/"+Credentials.name;
-			        // Se foi completo solicitar o id
-				    $.getJSON(reqid, function(data){
-				    	setCookie('cookieId',data.id,7);
-				    	console.log(data.id);
-				    	location.href = 'estatisticas.html';
-				    });
-			    }
+			$.ajax({
+				type: "PUT",
+				url: 'http://localhost:8080/dsaApp/user/'+User.id,
+				// The key needs to match your method's input parameter (case-sensitive).
+				data: JSON.stringify(User),
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
+				success: function(data) {
+					console.log("Sucesso");
+					console.log(data.status);
+				},
+				complete: function(data) {
+					console.log("Completo");
+					console.log(data.status);
+				}
 			});
-	    }
+
+		});
+
 	});
-
-  }); // end click event handler
-
 });
+
+// Se nao for null esta logado
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
 
 function setCookie(name,value,days) {
     var expires = "";
