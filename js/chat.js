@@ -31,7 +31,7 @@ function firstFunction(data){
 	// do some asynchronous work
 	// and when the asynchronous stuff is complete
 		$(data).each(function(index, value){
-			if (nomeCookie == value.username) {
+			if (nomeCookie.toLowerCase() == value.username.toLowerCase()) {
 				//var teste = montaCartao(value.content,value.username,value.receivedDate, value.id,"justify-content-end");
 				classe = "justify-content-end";
 			}else{

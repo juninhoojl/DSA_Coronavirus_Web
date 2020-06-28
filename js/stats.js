@@ -37,7 +37,7 @@ $(document).ready(function(){
                 var nome = value.name;
             }
 
-            if (nomeCookie == value.name) {
+            if (nomeCookie.toLowerCase() == value.name.toLowerCase()) {
                 console.log(nomeCookie+" "+value.name);
                 // compara aqui
                 // vai colorir de rosa
