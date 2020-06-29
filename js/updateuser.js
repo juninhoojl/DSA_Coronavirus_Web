@@ -60,6 +60,7 @@ $(function(){
 				success: function(data) {
 					console.log("Sucesso");
 					console.log(data.status);
+					alert("Try again later!");
 				},
 				complete: function(data) {
 					console.log("Completo");
