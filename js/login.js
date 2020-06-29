@@ -59,7 +59,6 @@ $(function(){
 		return;
 	}
 
-
 	var inputUser = document.getElementById("textUser").value;
 	var inputPass = document.getElementById("textPass").value;
 

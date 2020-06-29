@@ -25,6 +25,25 @@ $(document).ready(function(){
 
 });
 
+function shakeError(namele,tipo) {
+
+	var elemento = document.getElementById(namele);
+
+	var corAnt = elemento.style.backgroundColor;
+
+	if(tipo == 1){
+		elemento.style.backgroundColor = '#ff4c4c';
+	}
+
+	elemento.classList.add('error');
+
+	setTimeout(function() {
+		elemento.classList.remove('error');
+		elemento.style.backgroundColor = corAnt;
+	}, 300);
+}
+
+
 $(function(){
 
 	$('#botaoUpdate').on('click', function(e){
@@ -36,6 +55,25 @@ $(function(){
 		// INICIO EXEMPLO
 		var reqid = 'http://localhost:8080/dsaApp/user/search/'+getCookie('cookieId');
 		// Se foi completo solicitar o id
+
+		var username = document.getElementById("textUser");
+		var passuser = document.getElementById("textPass");
+		var mailuser = document.getElementById("textMail");
+
+		if(username.value.trim() == '' || passuser.value.trim() == '' || mailuser.value.trim() == ''){
+			if(username.value.trim() == '') {
+				shakeError("textUser",0);
+			}
+
+			if(passuser.value.trim() == '') {
+				shakeError("textPass",0);
+			}
+
+			if(mailuser.value.trim() == '') {
+				shakeError("textMail",0);
+			}
+			return;
+		}
 
 		$.getJSON(reqid, function(data){
 			var User = {

@@ -113,11 +113,39 @@ function firstFunction(data){
 			});
 		}
 
+
+
+function shakeError(namele,tipo) {
+
+	var elemento = document.getElementById(namele);
+
+	var corAnt = elemento.style.backgroundColor;
+
+	if(tipo == 1){
+		elemento.style.backgroundColor = '#ff4c4c';
+	}
+
+	elemento.classList.add('error');
+
+	setTimeout(function() {
+		elemento.classList.remove('error');
+		elemento.style.backgroundColor = corAnt;
+	}, 300);
+}
+
+
 $(function(){
 	$('#botaoPost').on('click', function(e){
 	e.preventDefault();
 
 	// Vai conferir se esta vazio ou nao
+
+	var textChat = document.getElementById("textPost");
+
+	if(textChat.value.trim() == '') {
+		shakeError("textPost",0);
+		return;
+	}
 
 	var ReceivedMessage = {
 		"username": getCookie('cookieName'),
